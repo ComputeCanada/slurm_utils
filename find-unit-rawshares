@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Find accounts with raw shares of 1 but jobs pending, and print the time.
+# Run this several minutes apart to see if there's some kind of
+# problem with the share updater.
+#
+# TODO: Check how long the jobs for the identified groups have been
+# pending, so you don't have to run this twice.  Want something like
+# squeue -A $acct -o "%V", but might need to handle multiple jobs.
+#
+# Ross Dickson, Compute Canada, 2019-04-29 & later
+#
+for acct in $(squeue -t PD --format="%a" --noheader | sort | uniq); do
+    sshare -l -A $acct --noheader | awk '$2 == 1 {print}'
+done
+date
