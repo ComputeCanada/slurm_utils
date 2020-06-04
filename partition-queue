@@ -1,0 +1,13 @@
+#!/bin/bash
+if [[ "$#" -ne 1 || "$1" == "-h" || "$1" == "--help" ]] ; then
+   SCRIPTNAME=$(basename $0)
+   echo "Usage:"
+   echo "$SCRIPTNAME <partition_name>[,<partition_name>[...]] # show numbered list of jobs waiting in <partition_name>"
+   echo "$SCRIPTNAME [-p|-l]                                  # show list of all partitions"
+   echo "$SCRIPTNAME [-h|--help]                              # show this help"
+elif [[ "$1" == "-p" || "$1" == "-l"  ]] ; then
+   echo "available partitions:"
+   scontrol show partitions | grep "PartitionName=" | sed 's/^.*=//'
+else
+   squeue --partition $1 --state PD --sort="-p" | nl -v 0
+fi
