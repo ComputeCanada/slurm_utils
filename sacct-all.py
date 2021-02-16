@@ -20,14 +20,14 @@ raw = subprocess.check_output(["sacct", "--format=ALL", "-P",
 lines = raw.rstrip().splitlines()
 
 # Tabulate the field names (keys).
-keys = lines[0].strip().split(field_sep)
+keys = lines[0].decode('utf-8').strip().split(field_sep)
 field_count = len(keys)
 print("Found", len(lines), "lines")
 
 # Create a list of job steps.
 jobsteps = []
 for line in lines[1:]:
-    step = line.strip().split(field_sep)
+    step = line.decode('utf-8').strip().split(field_sep)
     assert(field_count == len(step))
     jobsteps.append(step)
 
