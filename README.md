@@ -32,7 +32,7 @@ In the past 14 days, project def-account has used on average 0 cores and 0 GPUs
 ## squeue_prio
 Script to display top 10 jobs and their current priority.
 ```bash
-$ squeue_prio.sh
+$ squeue_prio.sh  <userX>
           JOBID   USER  PRIORITY
        32402825  userX  2519571
        32440131  userX  2318474
