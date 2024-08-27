@@ -80,3 +80,23 @@ $ partition-queue cpubase_bycore_b2 | head
 
 ```
 
+## whenwilldrain.sh
+Script takes a node-spec and prints sinfo and squeue information about those nodes so that one can see when the current jobs will finish.
+
+```bash
+$ whenwilldrain cluster[20-15]
+PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
+general*      up 3-00:00:00      6  alloc cluster[20-25]
+
+JOBID     USER       STATE       TIME_LEFT     NODELIST    END_TIME            
+123401    user123    RUNNING      22:50:47    cluster24    2024-08-28T13:58:37    
+123402    user123    RUNNING      22:50:47    cluster25    2024-08-28T13:58:37    
+123402    user321    RUNNING    2-06:51:04    cluster20    2024-08-29T21:58:54    
+123403    user321    RUNNING    2-06:51:04    cluster20    2024-08-29T21:58:54    
+123404    user321    RUNNING    2-06:51:04    cluster21    2024-08-29T21:58:54    
+123405    user321    RUNNING    2-06:51:04    cluster21    2024-08-29T21:58:54    
+123406    user321    RUNNING    2-06:51:04    cluster22    2024-08-29T21:58:54    
+123407    user321    RUNNING    2-06:51:04    cluster22    2024-08-29T21:58:54    
+123408    user321    RUNNING    2-06:51:04    cluster23    2024-08-29T21:58:54    
+```
+
