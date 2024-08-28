@@ -7,7 +7,6 @@ printhelp() {
 
 if [[ $# -ne 1 ]]; then
    echo "Error: argument required"
-   echo $#
    printhelp
    exit 1
 fi
@@ -18,5 +17,5 @@ fi
 
 sinfo --nodes="$1"
 echo ""
-squeue --Format="JOBID,UserName,State,TimeLeft,NodeList,EndTime"  --sort="+e,j" --nodelist="$1"
+squeue --Format="JOBID:8,UserName:14 ,State:8,TimeLeft:.11 ,NumNodes:.5 ,NodeList,EndTime" --sort="+e,j" --nodelist="$1"
 
