@@ -17,5 +17,4 @@ fi
 
 sinfo --nodes="$1"
 echo ""
-squeue --Format="JOBID:8,UserName:14 ,State:8,TimeLeft:.11 ,NumNodes:.5 ,NodeList,EndTime" --sort="+e,j" --nodelist="$1"
-
+squeue --Format="JOBID:8,UserName:14 ,Account:16 ,StateCompact:3,TimeLeft:.11 ,NumNodes:.5 ,EndTime,NodeList:" --sort="+e,j" --nodelist="$1"
